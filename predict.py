@@ -10,6 +10,7 @@ import numpy as np
 from typing import List
 from transformers import CLIPImageProcessor
 from huggingface_hub import hf_hub_download
+from safetensors.torch import load_file
 from diffusers import (
     StableDiffusionXLPipeline,
     DDIMScheduler,
@@ -83,7 +84,7 @@ class Predictor(BasePredictor):
             cache_dir=BASE_CACHE,
         ).to('cuda')
         unet_path = os.path.join(CKPT_CACHE, MODEL_CKPT)
-        self.pipe.unet.load_state_dict(torch.load(unet_path, map_location="cuda"))
+        self.pipe.unet.load_state_dict(load_file(unet_path, device="cuda"))
         print("setup took: ", time.time() - start)
 
     def run_safety_checker(self, image):
