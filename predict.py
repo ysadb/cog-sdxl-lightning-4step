@@ -25,7 +25,7 @@ from diffusers.pipelines.stable_diffusion.safety_checker import (
 )
 
 MODEL_NAME = "ByteDance/SDXL-Lightning"
-MODEL_CKPT = "sdxl_lightning_4step_unet.pth"
+MODEL_CKPT = "sdxl_lightning_4step_unet.safetensors"
 MODEL_BASE = "stabilityai/stable-diffusion-xl-base-1.0"
 CKPT_CACHE = "unet-cache"
 BASE_CACHE = "checkpoints"
